@@ -1,0 +1,122 @@
+# If this is your first time writing a language grammar check out:
+#   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
+
+'scopeName': 'source.firrtl'
+'name': 'Firrtl'
+'fileTypes': [
+  'fir'
+]
+'patterns': [
+	{ 
+		'include': "#comments"
+	}
+	{ 
+		'include': "#constants"
+	}
+	{ 
+		'include': "#keywords"
+	}
+	{ 
+		'include': "#functions"
+	}
+	{ 
+		'include': "#operators"
+	}
+	{ 
+		'include': "#identifiers"
+	}
+]
+'repository': { 
+	'comments': { 
+		'patterns': [
+			{ 
+				'match': ";.*$\\n?"
+				'name': "comment.line.comma.firrtl"
+			}
+			{ 
+				'match': "@\\[.+\\]"
+				'name': "comment.line.fileinfo.firrtl"
+			}
+		]
+	}
+	'constants': { 
+		'patterns': [
+			{ 
+					'match': "\\b(\\d[\\d_]*)\\b"
+					'name': "constant.numeric.decimal.firrtl"
+			}
+			{ 
+					'match': '"h([\\-]?[0-9a-fA-F]*)"'
+					'name': "constant.numeric.hex.firrtl"
+			}
+			{ 
+					'match': '"o([\\-]?[0-7]*)"'
+					'name': "constant.numeric.octal.firrtl"
+			}
+			{ 
+					'match': '"b([\\-]?[01]*)"'
+					'name': "constant.numeric.bit.firrtl"
+			}
+			{ 
+					'match': "\\b(\\-\\d+)\\b"
+					'name': "constant.numeric.signed.firrtl"
+			}
+		]
+	}
+	'functions': { 
+		'patterns': [
+			{ 
+				'match': "\\s*\\b(add|sub|mul|eq|neq|geq|dshl|dshr|shl|not|and|or|neg|cvt|asUInt|asSInt|asClock|pad|cat|bits|mux|validif)\\b(?=\\()"
+				'name': "support.function.firrtl"
+			}
+			{ 
+				'match': "\\s*\\b(div|rem|gt|leq|lt|shr|xor|andr|orr|xorr|head|tail)\\b(?=\\()"
+				'name': "support.function.firrtl"
+			}
+		]
+	}
+	'identifiers': { 
+		'patterns': [
+			{ 
+				'match': "(?:&lt;=(node ))[A-Za-z0-9_]+|(?:&lt;=(module ))[A-Za-z0-9_]+|(?:&lt;=(reg ))[A-Za-z0-9_]+|(?:&lt;=(wire ))[A-Za-z0-9_]+|(?:&lt;=inst )[A-Za-z0-9_]+"
+				'name': "variable.other.identifier.firrtl"
+			}
+		]
+	}
+	'keywords': { 
+		'patterns': [
+			{ 
+				'match': "\\s*\\b(skip|wire|infer|read|write|rdwr|mport|output|input|cmem|smem|when|else|node|flip)\\b"
+				'name': "keyword.language.firrtl"
+			}
+			{ 
+				'match': "^\\W*inst"
+				'name': "keyword.language.firrtl"
+			}
+			{ 
+				'match': "\\s*\\b(reg|((with)(?=\\W*:\\W*\\()))|((reset)(?=\\W*=>\\W*))\\b"
+				'name': "keyword.language.firrtl"
+			}
+			{ 
+				'match': "(([SU]Int.\\d+>)|[SU]Int.\\d+>\\[\\d+\\]|[SU]Int|[SU]Int\\[\\d+\\]|[SU]Int\\[\\d+\\]\\[\\d+\\]|[SU]Int.\\d+>\\[\\d+\\]\\[\\d+\\]|Clock|module|circuit|extmodule)"
+				'name': "support.class.firrtl"
+			}
+			{ 
+				'match': "invalid"
+				'name': "invalid.firrtl"
+			}
+		]
+	}
+	'operators': { 
+		'patterns': [
+			{ 
+				'match': "(&lt;=|&lt;\\-)"
+				'name': "keyword.language.operator.math.firrtl"
+			}
+			{ 
+				'match': "(:|{|})"
+				'name': "entity.name.firrtl"
+			}
+		]
+	}
+}
