@@ -1,12 +1,12 @@
 {
   "name": "language-firrtl",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "FIRRTL: Flexible Intermediate Representation for RTL - language support",
   "keywords": [
     "language",
     "grammar"
   ],
-  "repository": "https://github.com/atom/language-firrtl",
+  "repository": "https://github.com/johnsbrew/atom-language-firrtl",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
