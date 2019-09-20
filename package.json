@@ -4,11 +4,15 @@
   "description": "FIRRTL: Flexible Intermediate Representation for RTL - language support",
   "keywords": [
     "language",
-    "grammar"
+    "grammar",
+    "tree-sitter"
   ],
   "repository": "https://github.com/johnsbrew/atom-language-firrtl",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "tree-sitter-firrtl": "^0.2.0"
   }
 }
